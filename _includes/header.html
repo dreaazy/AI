@@ -1,0 +1,57 @@
+<header>
+  <div class="header-container">
+    <h1>{{ site.title }}</h1>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="{{ "/" | relative_url }}">Home</a></li>
+        <li><a href="{{ "/about" | relative_url }}">About</a></li>
+        <li><a href="{{ "/posts" | relative_url }}">Blog Posts</a></li>
+        <li><a href="{{ "/course" | relative_url }}">AI Course</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 0;
+  }
+
+  nav {
+    margin-left: auto;
+  }
+
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .nav-list li {
+    margin: 0 15px;
+  }
+
+  .nav-list li a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+  }
+
+  .nav-list li a:hover {
+    color: #0056b3;
+  }
+</style>

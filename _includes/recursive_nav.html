@@ -1,0 +1,23 @@
+{% assign chapters = site.pages | where: "layout", "chapter" %}
+{% assign current_chapters = chapters | where: "parent", include.parent_chapter %}
+{% if current_chapters.size > 0 %}
+    <ul>
+        {% for chapter in current_chapters %}
+            <li>
+                <strong>{{ chapter.title }}</strong>
+                <ul>
+                    {% assign chapter_number = chapter.chapter_number %}
+                    <!-- Display Posts under the Current Chapter -->
+                    {% for post in site.posts %}
+                        {% if post.chapter == chapter_number %}
+                            <li class="post-under-chapter"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    <!-- Recursive Call for Sub-Chapters -->
+                    {% include recursive_nav.html parent_chapter=chapter_number %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
