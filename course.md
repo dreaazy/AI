@@ -6,12 +6,6 @@ permalink: /course/
 
 # AI Course Overview
 
-Welcome to the AI course! Here are the chapters you can explore:
+Welcome to the AI course! Use the navigation on the left to explore the chapters and posts.
 
-<ul>
-  {% for chapter in site.pages %}
-    {% if chapter.path contains 'chapters' %}
-      <li><a href="{{ chapter.url | relative_url }}">{{ chapter.title }}</a></li>
-    {% endif %}
-  {% endfor %}
-</ul>
+The content of the post or chapter you select from the sidebar will appear here.

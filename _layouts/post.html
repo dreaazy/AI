@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/css/course.css" | relative_url }}">
+
+  <style>
+    .app {
+      display: flex;
+    }
+  </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>{{ site.title }}</h1>
-    <nav>
-      <ul>
-        <li><a href="{{ "/" | relative_url }}">Home</a></li>
-        <li><a href="{{ "/course" | relative_url }}">AI Course</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="app">
+    {% include sidebar.html %}
 
-  <main>
-    <article>
-      <h1>{{ page.title }}</h1>
-      <div class="post-content">
-        {{ content }}
-      </div>
-    </article>
+    <main>
+      <article>
+        <h1>{{ page.title }}</h1>
+        <div class="post-content">
+          {{ content }}
+        </div>
 
-    <nav class="post-navigation">
-      <a href="{{ "/chapters/chapter1" | relative_url }}">Back to Chapter 1 Overview</a>
-    </nav>
-  </main>
+        <hr>
+
+        <!-- Next Post Button -->
+        {% assign currentPost = page %}
+        {% assign posts = site.posts %}
+
+        {% for post in posts %}
+        {% if post.url == currentPost.url %}
+        {% assign nextIndex = forloop.index0 | plus: 1 %}
+        {% if nextIndex < posts.size %} {% assign nextPost=posts[nextIndex] %} <a
+          href="{{ nextPost.url | relative_url }}" class="next-post-button">
+          Next: {{ nextPost.title }}
+          </a>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+
+
+      </article>
+
+    </main>
+  </div>
+
+
+
+
 
 </body>
+
 </html>
